@@ -9,7 +9,7 @@ export const ADD_NEWBASKET="add"
 export const addbasket=(basket)=>async(dispatch)=>{
     dispatch({type:LOAD_BASKET})    
     try {
-        const res=await axios.post("http://localhost:8000/api/basket/addbasket",basket)
+        const res=await axios.post("https://back-end-1-txcx.onrender.com/api/basket/addbasket",basket)
         console.log(res)
         dispatch({type:ADD_BASKET , payload:res.data})
     } catch (error) {
@@ -19,7 +19,7 @@ export const addbasket=(basket)=>async(dispatch)=>{
 export const getbasket=()=>async(dispatch)=>{
     dispatch({type:LOAD_BASKET})    
     try {
-        const res=await axios.get("http://localhost:8000/api/basket/getbasket")
+        const res=await axios.get("https://back-end-1-txcx.onrender.com/api/basket/getbasket")
         dispatch({type:GET_BASKET , payload:res.data})
     } catch (error) {
         dispatch({type:FAIL_BASKET})

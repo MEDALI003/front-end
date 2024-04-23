@@ -13,7 +13,7 @@ export const GET_USER="get user"
 export const signup=(newuser)=>async(dispatch)=>{
     dispatch({type:LOAD_USER})
     try {
-        const res= await axios.post("http://localhost:8000/api/user/signup",newuser)
+        const res= await axios.post("https://back-end-1-txcx.onrender.com/api/user/signup",newuser)
         dispatch({type:SIGNUP,payload:res.data})
     } catch (error) {
        dispatch({type:FAIL_USER,payload:error}) 
@@ -22,7 +22,7 @@ export const signup=(newuser)=>async(dispatch)=>{
 export const login=(user)=>async(dispatch)=>{
     dispatch({type:LOAD_USER})
     try {
-        const res=await axios.post("http://localhost:8000/api/user/login",user)
+        const res=await axios.post("https://back-end-1-txcx.onrender.com/api/user/login",user)
         dispatch({type:SIGNIN,payload:res.data})
     } catch (error) {
         dispatch({type:FAIL_USER,payload:error})
@@ -31,7 +31,7 @@ export const login=(user)=>async(dispatch)=>{
 export const editPassword=(user)=>async(dispatch)=>{
     dispatch({type:LOAD_USER})
     try {
-         await axios.put(`http://localhost:8000/api/user/editpassword/${user._id}`,user.password)
+         await axios.put(`https://back-end-1-txcx.onrender.com/api/user/editpassword/${user._id}`,user.password)
         dispatch({type:EDIT_PASSWORD})
     } catch (error) {
         dispatch({type:FAIL_USER,payload:error})
@@ -40,7 +40,7 @@ export const editPassword=(user)=>async(dispatch)=>{
 export const editImage=(user)=>async(dispatch)=>{
     dispatch({type:LOAD_USER})
     try {
-        await axios.put(`http://localhost:8000/api/user/editphoto/${user._id}`,user.photo)
+        await axios.put(`https://back-end-1-txcx.onrender.com/api/user/editphoto/${user._id}`,user.photo)
         dispatch({type:EDIT_PASSWORD})
     } catch (error) {
         dispatch({type:FAIL_USER,payload:error})
@@ -49,7 +49,7 @@ export const editImage=(user)=>async(dispatch)=>{
 export const deleteUser=(_id)=>async(dispatch)=>{
     dispatch({type:LOAD_USER})
     try {
-        await axios.delete(`http://localhost:8000/api/user/deleteuser/${_id}`)
+        await axios.delete(`https://back-end-1-txcx.onrender.com/api/user/deleteuser/${_id}`)
     } catch (error) {
         dispatch({type:FAIL_USER,payload:error})
     }
@@ -64,7 +64,7 @@ export const current = () => async (dispatch) => {
         headers: { authorization: localStorage.getItem('token') }
       };
   
-      const res = await axios.get("http://localhost:8000/api/user/current", config);
+      const res = await axios.get("https://back-end-1-txcx.onrender.com/api/user/current", config);
   
       dispatch({ type: CURRENT, payload: res.data });
     } catch (error) {
